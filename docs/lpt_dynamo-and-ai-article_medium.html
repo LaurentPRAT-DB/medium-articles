@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<!--
+  Medium Article: AI is in its dynamo phase
+  Version: 1.0.0
+  Last Updated: 2026-11-03
+  Changes: SVG styles inlined (CSS vars stripped by Medium), table → list, HR → separator, sources h2 style removed
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI is in its dynamo phase</title>
+<meta name="description" content="The dynamo didn't make factories faster. Redesigning them did. A century-old productivity puzzle explains why so many companies pay for AI and see little change.">
+<style>
+:root{
+  color-scheme: light dark;
+  --bg:#ffffff; --ink:#1b1f24; --muted:#5b6470; --rule:#e3e5e8; --link:#0f6e56;
+  --ai-fill:#e1f5ee; --ai-stroke:#0f6e56; --ai-ink:#085041; --ai-sub:#0f6e56;
+  --hu-fill:#f1f2f4; --hu-stroke:#5b6470; --hu-ink:#2b3036; --hu-sub:#5b6470;
+  --eng-fill:#fdf0dc; --eng-stroke:#b45309; --eng-ink:#633806;
+  --shaft:#8b95a1;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14171a; --ink:#e8eaed; --muted:#9aa3ad; --rule:#2c3238; --link:#5dcaa5;
+    --ai-fill:#0b3b32; --ai-stroke:#5dcaa5; --ai-ink:#d1f4e8; --ai-sub:#9fe1cb;
+    --hu-fill:#23282d; --hu-stroke:#8b95a1; --hu-ink:#e8eaed; --hu-sub:#9aa3ad;
+    --eng-fill:#3b2a10; --eng-stroke:#ef9f27; --eng-ink:#fbe6bf;
+    --shaft:#8b95a1;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Charter,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:20px; line-height:1.68;
+}
+.sans{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+article{max-width:680px; margin:0 auto; padding:56px 24px 96px}
+h1,h2,h3{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink)}
+h1{font-size:clamp(2rem,5.4vw,3.1rem); line-height:1.1; font-weight:700; letter-spacing:-0.02em; margin:0 0 20px}
+.dek{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:1.3rem; line-height:1.4; color:var(--muted); margin:0 0 16px}
+.meta{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:.9rem; color:var(--muted); margin:0 0 40px; padding-bottom:28px; border-bottom:1px solid var(--rule)}
+h2{font-size:1.7rem; line-height:1.2; font-weight:700; letter-spacing:-0.01em; margin:56px 0 12px}
+p{margin:0 0 1.4em}
+a{color:var(--link); text-underline-offset:3px}
+a:focus-visible,.scroll:focus-visible{outline:3px solid var(--link); outline-offset:3px; border-radius:2px}
+figure{margin:40px -60px 40px; padding:0}
+.scroll{overflow-x:auto}
+.scroll svg{display:block; width:100%; min-width:560px; height:auto}
+figure.cover{margin:0 -60px 48px}
+figure.cover svg{display:block; width:100%; height:auto; border-radius:6px}
+figcaption{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:.88rem; line-height:1.5; color:var(--muted); margin:10px 60px 0}
+@media (max-width:860px){ figure,figure.cover{margin-left:0; margin-right:0} figcaption{margin-left:0; margin-right:0} }
+table{width:100%; border-collapse:collapse; margin:8px 0 32px; font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:.95rem; line-height:1.45}
+th,td{text-align:left; vertical-align:top; padding:12px 14px 12px 0; border-bottom:1px solid var(--rule)}
+th{font-weight:600; color:var(--ink); border-bottom:2px solid var(--ink)}
+td:first-child{color:var(--muted); width:42%}
+ul.changes{padding-left:1.2em; margin:0 0 1.4em}
+ul.changes li{margin-bottom:.9em}
+ul.changes strong{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-weight:650; font-size:.95em}
+.note{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:.92rem; line-height:1.55; color:var(--muted); border-left:3px solid var(--rule); padding:2px 0 2px 16px; margin:0 0 1.6em}
+.sources{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:.92rem; line-height:1.5; padding-left:1.2em; margin:0}
+.sources li{margin-bottom:.5em}
+hr{border:0; border-top:1px solid var(--rule); margin:56px 0 0}
+.close{font-size:1.15em}
+
+svg text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+svg .t{font-size:14px; font-weight:500; fill:var(--ink)}
+svg .s{font-size:12px; fill:var(--muted)}
+svg .frame{fill:none; stroke:var(--rule); stroke-width:1; stroke-dasharray:4 4}
+svg .arr{stroke:var(--muted); stroke-width:1.5; fill:none}
+svg .belt{stroke:var(--ink); stroke-width:1.4; opacity:.7}
+svg .shaft{stroke:var(--shaft); stroke-width:4; stroke-linecap:round}
+svg .ai rect{fill:var(--ai-fill); stroke:var(--ai-stroke); stroke-width:1}
+svg .ai .t{fill:var(--ai-ink)} svg .ai .s{fill:var(--ai-sub)}
+svg .hu rect{fill:var(--hu-fill); stroke:var(--hu-stroke); stroke-width:1}
+svg .hu .t{fill:var(--hu-ink)} svg .hu .s{fill:var(--hu-sub)}
+svg .eng rect{fill:var(--eng-fill); stroke:var(--eng-stroke); stroke-width:1}
+svg .eng .t{fill:var(--eng-ink)}
+svg .c{text-anchor:middle; dominant-baseline:central}
+</style>
+</head>
+<body>
+<article>
+
+<h1>AI is in its dynamo phase</h1>
+<p class="dek">The dynamo didn't make factories faster. Redesigning them did.</p>
+<p class="meta">6 min read</p>
+
+<figure class="cover">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="ct cd" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTowYzg2M2M0YS1lMWVmLTQ2NGEtYTZmNi1mZmI1NWRmYzRjZGQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaFmsG38zah8qQbjYH2iLxyIAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMjE4NjIyOC0yYmQ3LTRjM2EtYjQ3My0zMzBlNWU1NzZmOWVscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo59l39mtRj5Pg1vePxUiJ2AAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggaj2Cd7wJSxcHuZ759jCpaJP3m/FvdkxJvwrQdWintvWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaLqOFmMdnR6lt+ahHh1LvxwAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCAgYQyQ95SNxhEBCTtpb3er4DFANeFJ7Oe97OIZlVi1cmRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBihZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjBjODYzYzRhLWUxZWYtNDY0YS1hNmY2LWZmYjU1ZGZjNGNkZC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjY4ODA5NGZhLWE4MWItNGM0ZS1iN2NkLWVmMWExY2Q5MWU3NnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBqPYJ3vAlLFwe5nvn2MKlok/eb8W92TEm/CtB1aKe29aJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggiWGPAPMk4jKHYOMOPD8sXao/ecvA9uVCqIOAhr00XQ+iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg/NhsvAVLKQdGgTChWCN9b3pxn7bT9FuKdc7KL7Wn0FZ0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQM7rIXV3StPCjNMtUQmM2rlOE0iou27ucQMKznjrx/aN3icuZVsgarnJXOLXtkHXXSX+di4e52j0o69RSSTQo3g=</c2pa:manifest></metadata>
+<title id="ct">A glowing AI chip powering an old belt-and-shaft factory</title>
+<desc id="cd">A bright AI chip sits where the steam engine used to be and drives a line shaft with leather belts. The belts power five workstations named after process steps: intake (an inbox), review (a person), approval (a rubber stamp), handoff (a server) and sign-off (a person), with papers piling up beside them. Labels name each part and its AI equivalent: the dynamo swap is a copilot or chatbot added to an existing process, line shafts and belts are approvals, handoffs, reviews and org charts, machines placed where the belts reach are teams and systems organized around where people sit, and a dashed line on the floor shows the unit drive, AI embedded at each step with the process rebuilt around it.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1116"/><stop offset="1" stop-color="#1a232c"/></linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#2fd1a5" stop-opacity="0.6"/><stop offset="0.45" stop-color="#2fd1a5" stop-opacity="0.18"/><stop offset="1" stop-color="#2fd1a5" stop-opacity="0"/></radialGradient>
+  <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16564a"/><stop offset="1" stop-color="#0a2823"/></linearGradient>
+  <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2a93b" stop-opacity="0.28"/><stop offset="1" stop-color="#f2a93b" stop-opacity="0"/></linearGradient>
+  <radialGradient id="vig" cx="0.5" cy="0.5" r="0.75"><stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+</defs>
+
+<rect width="1600" height="900" fill="url(#bg)"/>
+
+<polygon points="900,0 990,0 770,720 620,720" fill="url(#beam)"/>
+<polygon points="1180,0 1270,0 1110,720 960,720" fill="url(#beam)"/>
+<polygon points="1450,0 1540,0 1450,720 1300,720" fill="url(#beam)"/>
+
+<rect x="0" y="0" width="1600" height="64" fill="#090d11"/>
+<line x1="0" y1="64" x2="1600" y2="64" stroke="#26313a" stroke-width="2"/>
+
+<line x1="560" y1="64" x2="560" y2="176" stroke="#4a5661" stroke-width="7"/>
+<line x1="960" y1="64" x2="960" y2="176" stroke="#4a5661" stroke-width="7"/>
+
+<rect x="0" y="700" width="1600" height="200" fill="#0a0e12"/>
+<line x1="0" y1="700" x2="1600" y2="700" stroke="#2a343d" stroke-width="2"/>
+
+<circle cx="170" cy="190" r="330" fill="url(#glow)"/>
+
+<g stroke="#b9772f" stroke-width="6" fill="none">
+  <line x1="486" y1="190" x2="502" y2="540"/><line x1="554" y1="190" x2="538" y2="540"/>
+  <line x1="726" y1="190" x2="742" y2="490"/><line x1="794" y1="190" x2="778" y2="490"/>
+  <line x1="966" y1="190" x2="1018" y2="520"/><line x1="1034" y1="190" x2="982" y2="520"/>
+  <line x1="1206" y1="190" x2="1258" y2="470"/><line x1="1274" y1="190" x2="1222" y2="470"/>
+  <line x1="1426" y1="190" x2="1442" y2="510"/><line x1="1494" y1="190" x2="1478" y2="510"/>
+</g>
+
+<g fill="#28323a" stroke="#46525c" stroke-width="2">
+  <rect x="450" y="660" width="140" height="40"/><rect x="465" y="600" width="110" height="60"/>
+  <rect x="690" y="660" width="140" height="40"/><rect x="705" y="550" width="110" height="110"/>
+  <rect x="930" y="660" width="140" height="40"/><rect x="945" y="580" width="110" height="80"/>
+  <rect x="1170" y="660" width="140" height="40"/><rect x="1185" y="530" width="110" height="130"/>
+  <rect x="1390" y="660" width="140" height="40"/><rect x="1405" y="570" width="110" height="90"/>
+</g>
+<g fill="#28323a">
+  <rect x="516" y="540" width="8" height="60"/>
+  <rect x="756" y="490" width="8" height="60"/>
+  <rect x="996" y="520" width="8" height="60"/>
+  <rect x="1236" y="470" width="8" height="60"/>
+  <rect x="1456" y="510" width="8" height="60"/>
+</g>
+<g fill="#121920" stroke="#46525c" stroke-width="2">
+  <rect x="471" y="612" width="98" height="30" rx="4"/>
+  <rect x="711" y="562" width="98" height="30" rx="4"/>
+  <rect x="951" y="592" width="98" height="30" rx="4"/>
+  <rect x="1191" y="542" width="98" height="30" rx="4"/>
+  <rect x="1411" y="582" width="98" height="30" rx="4"/>
+</g>
+<g font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#e3e9ee" text-anchor="middle" dominant-baseline="central">
+  <text x="520" y="627">Intake</text>
+  <text x="760" y="577">Review</text>
+  <text x="1000" y="607">Approval</text>
+  <text x="1240" y="557">Handoff</text>
+  <text x="1460" y="597">Sign-off</text>
+</g>
+<g fill="#d98a2b" opacity="0.85">
+  <circle cx="548" cy="642" r="5"/><circle cx="788" cy="642" r="5"/><circle cx="1028" cy="642" r="5"/><circle cx="1268" cy="642" r="5"/><circle cx="1488" cy="642" r="5"/>
+</g>
+<g fill="#2d3841" stroke="#8b95a1" stroke-width="3">
+  <circle cx="520" cy="540" r="18"/><circle cx="760" cy="490" r="18"/><circle cx="1000" cy="520" r="18"/><circle cx="1240" cy="470" r="18"/><circle cx="1460" cy="510" r="18"/>
+</g>
+<g fill="#8b95a1">
+  <circle cx="520" cy="540" r="5"/><circle cx="760" cy="490" r="5"/><circle cx="1000" cy="520" r="5"/><circle cx="1240" cy="470" r="5"/><circle cx="1460" cy="510" r="5"/>
+</g>
+
+<g stroke="#5f7384" stroke-width="2">
+  <rect x="380" y="672" width="56" height="28" rx="3" fill="#7d91a1"/>
+  <rect x="380" y="632" width="56" height="38" rx="3" fill="#cfd8df" stroke="#8b95a1"/>
+  <polyline points="380,634 408,654 436,634" fill="none" stroke="#8b95a1" stroke-width="2.5"/>
+  <circle cx="436" cy="632" r="8" fill="#d98a2b" stroke="#121920"/>
+</g>
+<g fill="#cfd8df" stroke="#8b95a1" stroke-width="1.5">
+  <rect x="597" y="692" width="30" height="8" rx="1"/><rect x="599" y="684" width="30" height="8" rx="1"/><rect x="596" y="676" width="30" height="8" rx="1"/>
+</g>
+<g stroke="#5f7384" stroke-width="2">
+  <line x1="662" y1="648" x2="691" y2="662" stroke="#8fa3b3" stroke-width="10" stroke-linecap="round"/>
+  <rect x="634" y="680" width="11" height="20" rx="3" fill="#7d91a1"/><rect x="651" y="680" width="11" height="20" rx="3" fill="#7d91a1"/>
+  <rect x="631" y="634" width="34" height="50" rx="11" fill="#8fa3b3"/>
+  <circle cx="648" cy="614" r="16" fill="#a9b9c6"/>
+</g>
+<g fill="#cfd8df" stroke="#8b95a1" stroke-width="1.5">
+  <rect x="837" y="692" width="30" height="8" rx="1"/><rect x="839" y="684" width="30" height="8" rx="1"/><rect x="836" y="676" width="30" height="8" rx="1"/>
+</g>
+<g stroke="#5f7384" stroke-width="2">
+  <rect x="872" y="686" width="32" height="14" rx="2" fill="#cfd8df" stroke="#8b95a1"/>
+  <rect x="862" y="668" width="52" height="16" rx="4" fill="#7d91a1"/>
+  <rect x="882" y="650" width="12" height="18" fill="#7d91a1"/>
+  <rect x="872" y="622" width="32" height="30" rx="14" fill="#d98a2b" stroke="#8a5516"/>
+</g>
+<g fill="#cfd8df" stroke="#8b95a1" stroke-width="1.5">
+  <rect x="1077" y="692" width="30" height="8" rx="1"/><rect x="1079" y="684" width="30" height="8" rx="1"/><rect x="1076" y="676" width="30" height="8" rx="1"/>
+</g>
+<g stroke="#5f7384" stroke-width="2">
+  <rect x="1112" y="618" width="36" height="82" rx="4" fill="#2d3841"/>
+  <rect x="1117" y="628" width="26" height="14" rx="2" fill="#121920"/>
+  <rect x="1117" y="650" width="26" height="14" rx="2" fill="#121920"/>
+  <rect x="1117" y="672" width="26" height="14" rx="2" fill="#121920"/>
+  <circle cx="1123" cy="635" r="3" fill="#d98a2b" stroke="none"/>
+  <circle cx="1123" cy="657" r="3" fill="#d98a2b" stroke="none"/>
+  <circle cx="1123" cy="679" r="3" fill="#d98a2b" stroke="none"/>
+</g>
+<g fill="#cfd8df" stroke="#8b95a1" stroke-width="1.5">
+  <rect x="1317" y="692" width="30" height="8" rx="1"/><rect x="1319" y="684" width="30" height="8" rx="1"/><rect x="1316" y="676" width="30" height="8" rx="1"/>
+</g>
+<g stroke="#5f7384" stroke-width="2">
+  <line x1="1362" y1="648" x2="1391" y2="662" stroke="#8fa3b3" stroke-width="10" stroke-linecap="round"/>
+  <rect x="1334" y="680" width="11" height="20" rx="3" fill="#7d91a1"/><rect x="1351" y="680" width="11" height="20" rx="3" fill="#7d91a1"/>
+  <rect x="1331" y="634" width="34" height="50" rx="11" fill="#8fa3b3"/>
+  <circle cx="1348" cy="614" r="16" fill="#a9b9c6"/>
+</g>
+<g fill="#cfd8df" stroke="#8b95a1" stroke-width="1.5">
+  <rect x="1537" y="692" width="30" height="8" rx="1"/><rect x="1539" y="684" width="30" height="8" rx="1"/><rect x="1536" y="676" width="30" height="8" rx="1"/>
+</g>
+<line x1="295" y1="190" x2="1560" y2="190" stroke="#8b95a1" stroke-width="14" stroke-linecap="round"/>
+<line x1="295" y1="185" x2="1560" y2="185" stroke="#c3cad2" stroke-width="3" opacity="0.55"/>
+<line x1="295" y1="190" x2="1560" y2="190" stroke="#2fd1a5" stroke-width="3" opacity="0.5"/>
+
+<g fill="#3a454f" stroke="#56636e" stroke-width="2">
+  <rect x="542" y="174" width="36" height="32" rx="4"/><rect x="942" y="174" width="36" height="32" rx="4"/>
+</g>
+
+<g fill="#2d3841" stroke="#8b95a1" stroke-width="3">
+  <circle cx="520" cy="190" r="34"/><circle cx="760" cy="190" r="34"/><circle cx="1000" cy="190" r="34"/><circle cx="1240" cy="190" r="34"/><circle cx="1460" cy="190" r="34"/>
+</g>
+<g fill="none" stroke="#46525c" stroke-width="3">
+  <circle cx="520" cy="190" r="22"/><circle cx="760" cy="190" r="22"/><circle cx="1000" cy="190" r="22"/><circle cx="1240" cy="190" r="22"/><circle cx="1460" cy="190" r="22"/>
+</g>
+<g fill="#8b95a1">
+  <circle cx="520" cy="190" r="8"/><circle cx="760" cy="190" r="8"/><circle cx="1000" cy="190" r="8"/><circle cx="1240" cy="190" r="8"/><circle cx="1460" cy="190" r="8"/>
+</g>
+
+<circle cx="350" cy="190" r="62" fill="#2d3841" stroke="#8b95a1" stroke-width="4"/>
+<circle cx="350" cy="190" r="44" fill="none" stroke="#46525c" stroke-width="3"/>
+<circle cx="350" cy="190" r="12" fill="#8b95a1"/>
+
+<g fill="#2fd1a5" opacity="0.28"><circle cx="430" cy="190" r="16"/><circle cx="640" cy="190" r="16"/><circle cx="880" cy="190" r="16"/><circle cx="1120" cy="190" r="16"/><circle cx="1350" cy="190" r="16"/></g>
+<g fill="#7ff0cc"><circle cx="430" cy="190" r="6"/><circle cx="640" cy="190" r="6"/><circle cx="880" cy="190" r="6"/><circle cx="1120" cy="190" r="6"/><circle cx="1350" cy="190" r="6"/></g>
+
+<g fill="#0f3a33" stroke="#5dcaa5" stroke-width="2">
+  <rect x="94" y="72" width="10" height="24"/><rect x="122" y="72" width="10" height="24"/><rect x="150" y="72" width="10" height="24"/><rect x="178" y="72" width="10" height="24"/><rect x="206" y="72" width="10" height="24"/><rect x="234" y="72" width="10" height="24"/>
+  <rect x="94" y="284" width="10" height="24"/><rect x="122" y="284" width="10" height="24"/><rect x="150" y="284" width="10" height="24"/><rect x="178" y="284" width="10" height="24"/><rect x="206" y="284" width="10" height="24"/><rect x="234" y="284" width="10" height="24"/>
+  <rect x="52" y="114" width="24" height="10"/><rect x="52" y="142" width="24" height="10"/><rect x="52" y="170" width="24" height="10"/><rect x="52" y="198" width="24" height="10"/><rect x="52" y="226" width="24" height="10"/><rect x="52" y="254" width="24" height="10"/>
+</g>
+<g fill="none" stroke="#2fd1a5" stroke-width="3" opacity="0.8">
+  <polyline points="127,308 127,350 70,350"/><polyline points="183,308 183,380"/><polyline points="239,308 239,340 310,340"/>
+  <polyline points="52,147 24,147"/><polyline points="52,231 24,231 24,270"/>
+</g>
+<g fill="#7ff0cc"><circle cx="70" cy="350" r="6"/><circle cx="183" cy="380" r="6"/><circle cx="310" cy="340" r="6"/><circle cx="24" cy="147" r="5"/><circle cx="24" cy="270" r="5"/></g>
+
+<rect x="75" y="95" width="190" height="190" rx="28" fill="url(#chip)" stroke="#5dcaa5" stroke-width="4"/>
+<rect x="105" y="125" width="130" height="130" rx="16" fill="none" stroke="#2fd1a5" stroke-width="2" opacity="0.7"/>
+<text x="170" y="192" text-anchor="middle" dominant-baseline="central" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="78" font-weight="800" fill="#d1f4e8" letter-spacing="2">AI</text>
+
+<rect x="265" y="178" width="32" height="24" fill="#8b95a1"/>
+
+<line x1="430" y1="860" x2="1525" y2="860" stroke="#2fd1a5" stroke-width="3" stroke-dasharray="12 12" opacity="0.45"/>
+<polygon points="1525,847 1552,860 1525,873" fill="#2fd1a5" opacity="0.45"/>
+<g fill="none" stroke="#2fd1a5" stroke-width="3" stroke-dasharray="6 6" opacity="0.5">
+  <rect x="502" y="842" width="36" height="36" rx="6"/><rect x="742" y="842" width="36" height="36" rx="6"/><rect x="982" y="842" width="36" height="36" rx="6"/><rect x="1222" y="842" width="36" height="36" rx="6"/><rect x="1442" y="842" width="36" height="36" rx="6"/>
+</g>
+
+<rect width="1600" height="900" fill="url(#vig)"/>
+
+<g font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <g fill="none" stroke-width="2" stroke-dasharray="5 5">
+    <line x1="183" y1="388" x2="183" y2="434" stroke="#7ff0cc"/>
+    <line x1="1330" y1="152" x2="1330" y2="182" stroke="#f6c177"/>
+    <line x1="760" y1="726" x2="760" y2="704" stroke="#f6c177"/>
+    <line x1="1240" y1="814" x2="1240" y2="840" stroke="#7ff0cc"/>
+  </g>
+
+  <text x="40" y="458" font-size="24" font-weight="700" fill="#7ff0cc">Steam engine swapped for a dynamo</text>
+  <text x="40" y="486" font-size="19" fill="#cfd8df">A copilot or chatbot added to</text>
+  <text x="40" y="512" font-size="19" fill="#cfd8df">an existing process</text>
+
+  <text x="1050" y="92" font-size="24" font-weight="700" fill="#f6c177">Line shafts and belts</text>
+  <text x="1050" y="120" font-size="19" fill="#cfd8df">Approvals, handoffs, reviews and org charts,</text>
+  <text x="1050" y="146" font-size="19" fill="#cfd8df">all built around human throughput</text>
+
+  <text x="600" y="750" font-size="24" font-weight="700" fill="#f6c177">Machines placed where the belts reach</text>
+  <text x="600" y="778" font-size="19" fill="#cfd8df">Teams and systems organized around where</text>
+  <text x="600" y="804" font-size="19" fill="#cfd8df">people sit, not around the flow of work</text>
+
+  <text x="1090" y="750" font-size="24" font-weight="700" fill="#7ff0cc">Unit drive: a motor per machine</text>
+  <text x="1090" y="778" font-size="19" fill="#cfd8df">AI embedded at each step, with the</text>
+  <text x="1090" y="804" font-size="19" fill="#cfd8df">process rebuilt around it</text>
+</g>
+</svg>
+</figure>
+
+<p>Walk into a factory in 1890 and look up. The ceiling is a maze of spinning shafts, pulleys and leather belts, all driven by a single engine somewhere in the building. Every machine on the floor is tied to that engine by a belt, which means every machine has to stand where a belt can reach it.</p>
+
+<p>Then electricity arrived, and for a long time almost nothing happened. In 1990 the Stanford economist Paul David explained why in a short paper called "The Dynamo and the Computer." Factories had swapped the steam engine for an electric dynamo and kept everything else: the same shafts, the same belts, the same floor plan.</p>
+
+<figure>
+<div class="scroll" tabindex="0" role="region" aria-label="Diagram, scrollable on small screens">
+<svg viewBox="0 0 680 262" role="img" aria-labelledby="f1t f1d">
+<title id="f1t">Group drive versus unit drive</title>
+<desc id="f1d">Left: one engine turns an overhead line shaft and belts drive three machines. Right: each machine has its own motor and machines are arranged along the flow of material.</desc>
+<defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5b6470" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="20" y="16" width="305" height="226" rx="16" fill="none" stroke="#e3e5e8" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="172" y="42" font-size="14" font-weight="500" fill="#1b1f24" text-anchor="middle" dominant-baseline="central">Group drive</text>
+<rect x="36" y="66" width="64" height="36" rx="6" fill="#fdf0dc" stroke="#b45309" stroke-width="1"/>
+<text x="68" y="84" font-size="14" font-weight="500" fill="#633806" text-anchor="middle" dominant-baseline="central">Engine</text>
+<line x1="100" y1="84" x2="308" y2="84" stroke="#8b95a1" stroke-width="4" stroke-linecap="round"/>
+<text x="204" y="70" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Line shaft</text>
+<line x1="135" y1="86" x2="135" y2="164" stroke="#1b1f24" stroke-width="1.4" opacity="0.7"/>
+<line x1="195" y1="86" x2="195" y2="164" stroke="#1b1f24" stroke-width="1.4" opacity="0.7"/>
+<line x1="255" y1="86" x2="255" y2="164" stroke="#1b1f24" stroke-width="1.4" opacity="0.7"/>
+<rect x="110" y="164" width="50" height="34" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="135" y="181" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Lathe</text>
+<rect x="170" y="164" width="50" height="34" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="195" y="181" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Drill</text>
+<rect x="230" y="164" width="50" height="34" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="255" y="181" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Mill</text>
+<text x="172" y="224" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Machines sit where the belts reach</text>
+<rect x="355" y="16" width="305" height="226" rx="16" fill="none" stroke="#e3e5e8" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="507" y="42" font-size="14" font-weight="500" fill="#1b1f24" text-anchor="middle" dominant-baseline="central">Unit drive</text>
+<rect x="380" y="106" width="22" height="22" rx="4" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="391" y="117" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">M</text>
+<rect x="450" y="106" width="22" height="22" rx="4" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="461" y="117" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">M</text>
+<rect x="520" y="106" width="22" height="22" rx="4" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="531" y="117" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">M</text>
+<rect x="590" y="106" width="22" height="22" rx="4" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="601" y="117" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">M</text>
+<rect x="366" y="136" width="50" height="34" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="391" y="153" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Saw</text>
+<rect x="436" y="136" width="50" height="34" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="461" y="153" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Lathe</text>
+<rect x="506" y="136" width="50" height="34" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="531" y="153" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Mill</text>
+<rect x="576" y="136" width="50" height="34" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="601" y="153" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Pack</text>
+<line x1="418" y1="153" x2="434" y2="153" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+<line x1="488" y1="153" x2="504" y2="153" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+<line x1="558" y1="153" x2="574" y2="153" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+<text x="507" y="224" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Machines sit along the material flow</text>
+</svg>
+</div>
+<figcaption>Left: one power source, shafts overhead, belts to every machine. Right: a motor on each machine, so the floor can follow the work. M marks a motor.</figcaption>
+</figure>
+
+<h2>The fix was not a better motor</h2>
+
+<p>The gains came when factories gave each machine its own motor. With no shafts overhead, buildings could have high ceilings, plenty of light and a safer floor. Machines could be arranged along the flow of materials instead of along the line of a shaft. Formlabs, writing about the history, argues that the modern factory emerged from exactly this shift to individually powered machines.</p>
+
+<p>Productivity followed. US manufacturing productivity grew by more than five percent a year in the 1920s, roughly four decades after electricity became commercial, according to Slate's Undercover Economist column on David's work.</p>
+
+<h2>It took four decades</h2>
+
+<p>The delay was not a mystery once you look at the economics. Electric motors made up less than five percent of mechanical-drive capacity in US factories in 1899, and it took about two more decades to reach half. By one estimate, nearly forty years passed before electrification showed up in the productivity numbers.</p>
+
+<p>Part of the reason is that the first step was easy. Bolting a motor onto an existing belt system needed no new building and no new workflow. The real fix meant new factories, new floor plans and a new way of organizing the work. David also argued that the First World War helped force the issue: immigration controls cut off a supply of cheap, untrained labor, and owners had to find another way.</p>
+
+<h2>The same pattern, a century later</h2>
+
+<p>Replace the factory with a company and the dynamo with AI, and the story starts to look familiar.</p>
+
+<ul>
+<li><strong>Steam engine swapped for a dynamo</strong> — A copilot or chatbot added to an existing process</li>
+<li><strong>Line shafts and belts</strong> — Approvals, handoffs, reviews and org charts built around human throughput</li>
+<li><strong>Machines placed where the belts reach</strong> — Teams and systems organized around where people sit</li>
+<li><strong>Unit drive: a motor per machine</strong> — AI embedded at each step, with the process rebuilt around it</li>
+</ul>
+
+<p>The numbers fit the picture. McKinsey's 2025 survey of nearly 2,000 organizations found that 88 percent use AI in at least one function, but only 39 percent report any impact on earnings, and most of those say it is under five percent of EBIT. About six percent qualify as "high performers," where AI drives five percent or more of EBIT. The 2026 update looks much the same: 37 percent report a positive effect and the high-performer share has not moved.</p>
+
+<figure>
+<div class="scroll" tabindex="0" role="region" aria-label="Chart, scrollable on small screens">
+<svg viewBox="0 0 680 250" role="img" aria-labelledby="f2t f2d">
+<title id="f2t">Gap between AI adoption and financial impact</title>
+<desc id="f2d">Bars show 88 percent of organizations use AI, 39 percent report any EBIT impact, and 6 percent are high performers with 5 percent or more EBIT impact.</desc>
+<text x="40" y="34" font-size="12" fill="#5b6470">Use AI in at least one function</text>
+<rect x="40" y="44" width="500" height="28" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="552" y="58" font-size="14" font-weight="500" fill="#1b1f24" dominant-baseline="central">88%</text>
+<text x="40" y="102" font-size="12" fill="#5b6470">Report any EBIT impact from AI</text>
+<rect x="40" y="112" width="222" height="28" rx="4" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="274" y="126" font-size="14" font-weight="500" fill="#1b1f24" dominant-baseline="central">39%</text>
+<text x="40" y="170" font-size="12" fill="#5b6470">High performers: AI drives 5% or more of EBIT</text>
+<rect x="40" y="180" width="34" height="28" rx="4" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="86" y="194" font-size="14" font-weight="500" fill="#1b1f24" dominant-baseline="central">6%</text>
+<text x="40" y="236" font-size="12" fill="#5b6470">Share of respondents, McKinsey State of AI 2025 (1,993 organizations)</text>
+</svg>
+</div>
+<figcaption>Adoption is nearly universal. Measurable financial impact is not.</figcaption>
+</figure>
+
+<p>What separates the six percent is not the model they use or the size of the budget. High performers are nearly three times as likely to have fundamentally redesigned their workflows. In the 2026 survey, roughly three-quarters of them redesign work around AI, compared with about a quarter of everyone else.</p>
+
+<p class="note">These are survey correlations, not proof of cause, and several of the secondary sources are consultancy and vendor writing. Treat the exact figures with some caution. The direction is consistent across sources.</p>
+
+<h2>Why the bill looks big and the impact looks small</h2>
+
+<p>If AI speeds up one step, such as drafting, summarizing or coding, the bottleneck simply moves. The draft arrives sooner, then waits in the same review queue, the same approval chain and the same overnight batch as before. The time saved in one place is lost in the next.</p>
+
+<p>There is a second leak. Faster cycle times can be eaten by per-use costs before they ever reach earnings, so a team can feel quicker while the finance numbers stay flat. That is the dynamo on a belt system: the motor works, and the factory around it does not let it matter.</p>
+
+<h2>What it looks like in an insurance claim</h2>
+
+<p>Take a motor-insurance claim, which runs through submission, verification, a decision and payment. The example below is illustrative, not drawn from a specific insurer.</p>
+
+<p>In the bolted-on version, AI summarizes the claim file for the adjuster. That is useful, but verification is still manual, claims still wait for sign-off, and payment still runs in a batch. The end-to-end time barely moves.</p>
+
+<figure>
+<div class="scroll" tabindex="0" role="region" aria-label="Diagram, scrollable on small screens">
+<svg viewBox="0 0 680 400" role="img" aria-labelledby="f3t f3d">
+<title id="f3t">Insurance claim process: bolted-on AI versus redesigned</title>
+<desc id="f3d">Top: five-step claim process where AI only summarizes the file and verification, sign-off and payment stay manual. Bottom: AI handles submission, verification, decision and payment, and adjusters handle only complex or flagged claims.</desc>
+<defs><marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5b6470" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="20" y="16" width="640" height="136" rx="16" fill="none" stroke="#e3e5e8" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="40" y="42" font-size="14" font-weight="500" fill="#1b1f24">Bolted on: AI summarizes the claim file</text>
+<rect x="40" y="58" width="104" height="56" rx="8" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="92" y="76" font-size="14" font-weight="500" fill="#2b3036" text-anchor="middle" dominant-baseline="central">Submit</text>
+<text x="92" y="96" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Form or call</text>
+<rect x="164" y="58" width="104" height="56" rx="8" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="216" y="76" font-size="14" font-weight="500" fill="#2b3036" text-anchor="middle" dominant-baseline="central">Verify</text>
+<text x="216" y="96" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Manual checks</text>
+<rect x="288" y="58" width="104" height="56" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="340" y="76" font-size="14" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">Assess</text>
+<text x="340" y="96" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">AI summary</text>
+<rect x="412" y="58" width="104" height="56" rx="8" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="464" y="76" font-size="14" font-weight="500" fill="#2b3036" text-anchor="middle" dominant-baseline="central">Approve</text>
+<text x="464" y="96" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Sign-off wait</text>
+<rect x="536" y="58" width="104" height="56" rx="8" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="588" y="76" font-size="14" font-weight="500" fill="#2b3036" text-anchor="middle" dominant-baseline="central">Pay</text>
+<text x="588" y="96" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Batch run</text>
+<line x1="146" y1="86" x2="162" y2="86" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<line x1="270" y1="86" x2="286" y2="86" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<line x1="394" y1="86" x2="410" y2="86" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<line x1="518" y1="86" x2="534" y2="86" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<text x="40" y="138" font-size="12" fill="#5b6470">Summaries are faster, but verification, sign-off and payment stay manual</text>
+<rect x="20" y="166" width="640" height="194" rx="16" fill="none" stroke="#e3e5e8" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="40" y="192" font-size="14" font-weight="500" fill="#1b1f24">Redesigned: AI runs the claim, adjusters take exceptions</text>
+<rect x="40" y="210" width="132" height="56" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="106" y="228" font-size="14" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">Submit</text>
+<text x="106" y="248" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">App or chat</text>
+<rect x="196" y="210" width="132" height="56" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="262" y="228" font-size="14" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">Verify</text>
+<text x="262" y="248" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">Cover and fraud</text>
+<rect x="352" y="210" width="132" height="56" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="418" y="228" font-size="14" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">Decide</text>
+<text x="418" y="248" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">Within limits</text>
+<rect x="508" y="210" width="132" height="56" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="574" y="228" font-size="14" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">Pay</text>
+<text x="574" y="248" font-size="12" fill="#0f6e56" text-anchor="middle" dominant-baseline="central">Same-day payout</text>
+<line x1="174" y1="238" x2="194" y2="238" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<line x1="330" y1="238" x2="350" y2="238" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<line x1="486" y1="238" x2="506" y2="238" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<line x1="418" y1="268" x2="418" y2="286" stroke="#5b6470" stroke-width="1.5" fill="none" marker-end="url(#a3)"/>
+<rect x="338" y="288" width="160" height="56" rx="8" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="418" y="306" font-size="14" font-weight="500" fill="#2b3036" text-anchor="middle" dominant-baseline="central">Adjuster</text>
+<text x="418" y="326" font-size="12" fill="#5b6470" text-anchor="middle" dominant-baseline="central">Complex or flagged</text>
+<text x="510" y="316" font-size="12" fill="#5b6470" dominant-baseline="central">Only exceptions</text>
+<rect x="40" y="378" width="14" height="14" rx="3" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1"/>
+<text x="62" y="386" font-size="12" fill="#5b6470" dominant-baseline="central">AI step</text>
+<rect x="140" y="378" width="14" height="14" rx="3" fill="#f1f2f4" stroke="#5b6470" stroke-width="1"/>
+<text x="162" y="386" font-size="12" fill="#5b6470" dominant-baseline="central">Human step</text>
+</svg>
+</div>
+<figcaption>The same claim process, twice. In the first, AI helps one step. In the second, the process is rebuilt so AI carries the claim from submission to payment.</figcaption>
+</figure>
+
+<p>In the redesigned version, verification happens as the claim arrives: the system checks policy cover, validates documents and photos, and scores fraud signals. The decision is automatic within set limits, such as claim type, amount and fraud score. Payment is triggered by the decision itself, with no queue and no overnight batch. Adjusters stop touching every claim and spend their time on the complex and flagged ones, which is where their judgment is worth the most.</p>
+
+<h2>What to change</h2>
+
+<p>The lesson from the factory is that the new power source was never the hard part. These are the changes I would make first.</p>
+
+<ul class="changes">
+<li><strong>Start from the outcome, not the tool.</strong> Pick a whole process and ask how it would look if AI handled most of the steps from the start.</li>
+<li><strong>Let AI own steps.</strong> An assistant that helps one person is a motor on a belt. An agent that completes a step and escalates only the edge cases is the unit drive.</li>
+<li><strong>Fix the wiring.</strong> Clean data, clear permissions and working integrations are what let AI reach the work. Without them it stays stuck at the shaft.</li>
+<li><strong>Measure the workflow, not the tool.</strong> Track cycle time, straight-through rate, escalation rate, quality and cost per transaction. License counts and prompt volumes say little.</li>
+<li><strong>Design the guardrails.</strong> Automated decisions need clear limits, logging and an explanation for each outcome. Regulation may require human review for some decisions, so the "within limits" line is a design choice and not only a technical one.</li>
+<li><strong>Aim beyond efficiency.</strong> About 80 percent of respondents in McKinsey's survey set efficiency as the goal, while high performers also pursue growth and new offerings.</li>
+</ul>
+
+<p class="close">The technology arrived long before the organizations did, and the same thing is happening again. The useful question is not which AI tool to add. It is which belts are still hanging from your ceiling.</p>
+
+<p style="text-align:center;color:#5b6470;letter-spacing:.25em">· · ·</p>
+
+<h2>Sources</h2>
+<ul class="sources">
+<li>Paul A. David, "The Dynamo and the Computer: An Historical Perspective on the Modern Productivity Paradox," <em>American Economic Review</em>, May 1990.</li>
+<li><a href="https://daily.fattail.com.au/mind-the-gap-part-2/20260926/">Fat Tail Daily, "Mind the Gap, Part 2"</a></li>
+<li><a href="https://formlabs.com/blog/why-new-technology-isnt-enough-to-transform-manufacturing/">Formlabs, "Why new technology isn't enough to transform manufacturing"</a></li>
+<li><a href="https://www.core77.com/posts/58982/how-did-factories-get-power-to-their-machines-before-electricity">Core77, "How did factories get power to their machines before electricity"</a></li>
+<li><a href="https://www.slate.com/articles/arts/the_undercover_economist/2007/06/the_shock_of_the_new.html">Slate, "The Shock of the New"</a></li>
+<li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai">McKinsey, "The state of AI in 2025: Agents, innovation, and transformation"</a></li>
+<li><a href="https://www.techtarget.com/it-strategy/opinion/Enterprise-AI-got-better-but-the-ROI-didnt">TechTarget, "Enterprise AI got better but the ROI didn't"</a></li>
+<li><a href="https://www.ciklum.com/blog/enterprise-ai-productivity-impact/">Ciklum, "The Real Impact of AI Automation on Enterprise Productivity at Scale"</a></li>
+</ul>
+
+</article>
+</body>
+</html>
